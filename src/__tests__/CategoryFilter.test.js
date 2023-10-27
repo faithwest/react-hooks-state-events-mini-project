@@ -33,14 +33,14 @@ test("clicking the category button filters the task list", () => {
   expect(screen.queryByText("Build a todo app")).toBeInTheDocument();
   expect(screen.queryByText("Buy rice")).not.toBeInTheDocument();
 });
-
-test("displays all tasks when the 'All' button is clicked", () => {
+test("clicking the category button adds a class of 'selected' to the button", () => {
   render(<App />);
 
+  const codeButton = screen.queryByRole("button", { name: "Code" });
   const allButton = screen.queryByRole("button", { name: "All" });
 
-  fireEvent.click(allButton);
+  fireEvent.click(codeButton);
 
-  expect(screen.queryByText("Build a todo app")).toBeInTheDocument();
-  expect(screen.queryByText("Buy rice")).toBeInTheDocument();
+  expect(codeButton.classList.contains("selected")).toBe(true);
+  expect(allButton.classList.contains("selected")).toBe(false);
 });
