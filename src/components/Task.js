@@ -1,17 +1,11 @@
 import React from "react";
 
-function Task({test, category, onDelete}) {
-  const handleDelete = () => {
-    if (onDelete) {
-      onDelete();
-    }
-  }
-
-  rreturn (
+function Task({ text, category, onDelete }) {
+  return (
     <div>
-      <span>{text}</span>
-      <span>{category}</span>
-      <button onClick={handleDelete}>Delete</button>
+      <p>{text}</p>
+      <p>{category}</p>
+      <button onClick={onDelete}>Delete</button>
     </div>
   );
 }

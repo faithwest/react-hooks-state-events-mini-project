@@ -1,34 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
-function CategoryFilter({ categories, tasks, onCategoryChange }) {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    onCategoryChange(category);
-  };
-
+function CategoryFilter({ categories, onCategoryChange }) {
   return (
     <div>
-      <button
-        key="All"
-        className={selectedCategory === "All" ? "selected" : ""}
-        onClick={() => handleCategoryClick("All")}
-      >
-        All
-      </button>
       {categories.map((category) => (
         <button
           key={category}
-          className={selectedCategory === category ? "selected" : ""}
-          onClick={() => handleCategoryClick(category)} >
-       
+          onClick={() => onCategoryChange(category)}
+          className="category-button"
+        >
           {category}
         </button>
-      )}
+      ))}
     </div>
   );
 }
 
 export default CategoryFilter;
-
